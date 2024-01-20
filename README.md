@@ -1,21 +1,21 @@
 # test
 
-## Project setup
+## Установка зависимостей
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Сборка и запуск проекта
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Сборка для продажи
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Проверка стиля кода
 ```
 npm run lint
 ```
