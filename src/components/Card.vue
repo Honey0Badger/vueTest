@@ -1,36 +1,32 @@
 <template>
   <div class="rows">
-    <form class="row g-3">
+    <div class="row g-3">
       <div class="col-auto">
         <label for="inputName" class="visually-hidden">Название</label>
-        <input v-model="part" type="text" class="form-control" id="inputName" placeholder="Название">
+        <input v-model="part.PName" type="text" class="form-control" id="inputName" placeholder="Название">
       </div>
       <div class="col-auto">
         <label for="inputPrice" class="visually-hidden">Цена за 1 шт.</label>
-        <input v-model="price" type="text" class="form-control" id="inputPrice" placeholder="Цена за 1 шт.">
+        <input v-model="part.Price" type="text" class="form-control" id="inputPrice" placeholder="Цена за 1 шт.">
       </div>
       <div class="col-auto">
         <label for="inputVolume" class="visually-hidden">Количество</label>
-        <input v-model="volume" type="text" class="form-control" id="inputVolume" placeholder="Количество">
+        <input v-model="part.PVolume" type="text" class="form-control" id="inputVolume" placeholder="Количество">
       </div>
       <div class="col-auto">
         <button v-on:click="added" class="btn btn-primary mb-3">Добавить</button>
       </div>
-    </form>
-
+    </div>
     <button v-on:click="show" class="btn btn-primary mb-3">Посмотреть результат</button>
-
     <div v-if="check" class="row">
       <ul id="array-rendering">
-        <li v-for="item in product" :key="item.PName">
+        <li v-for="item in products" :key="item">
           {{ item.PName }} <br>
           {{ item.Price }} <br>
-          {{ item.PVolume }} <br>
-          
+          {{ item.PVolume }} <br/>
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
@@ -44,22 +40,17 @@ export default {
   },
   data(){
     return{
-      product: [],
-      part: "",
-      price: "",
-      volume: "",
+      products: [],
+      part: Product,
       check: false
     }
   },
   methods:{
     added(){
-      let p = new Product(this.part, this.price, this.volume)
-      this.product.push(p)
-      alert(this.product[0].PName)
-      console.table(this.product)
+      this.products.push({...this.part});
     },
     show(){
-      this.check = true
+      this.check = !this.check
     }
   }
 }
