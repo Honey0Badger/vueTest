@@ -1,5 +1,6 @@
 <template>
   <div class="rows">
+  <slot></slot>
     <div class="row g-3">
       <div class="col-auto">
         <label for="inputName" class="visually-hidden">Название</label>
@@ -27,6 +28,12 @@
         </li>
       </ul>
     </div>
+
+  <div class="alert alert-primary" role="alert">
+    У нас товара лежит в корзине на сумму: {{ this.products.PVolume }}
+  </div>
+
+  <slot></slot>
   </div>
 </template>
 
@@ -51,10 +58,17 @@ export default {
     },
     show(){
       this.check = !this.check
+    },
+    computed: {
+      resultSumm(){
+        return this.products.length;
+        }
     }
   }
 }
 </script>
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
